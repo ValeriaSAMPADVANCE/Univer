@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Процесс зачисления и обучения — ГУСФ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #000000;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Georgia', serif;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-left img {
+      height: 80px;
+      margin-right: 20px;
+    }
+
+    .header-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .header-title .title-line {
+      font-size: 18px;
+      font-weight: normal;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-right img {
+      height: 22px;
+      width: 22px;
+      object-fit: contain;
+    }
+
+    .header-right .divider {
+      height: 22px;
+      width: 1px;
+      background-color: #999;
+    }
+
+    nav {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+      position: relative;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+    }
+
+    nav a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      font-family: 'Georgia', serif;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+
+    nav .dropdown {
+      position: relative;
+    }
+
+    nav .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgb(0, 0, 0);
+      padding: 10px;
+      border-radius: 0 0 10px 10px;
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    nav .dropdown-content a {
+      display: block;
+      color: white;
+      padding: 5px 10px;
+    }
+
+    nav .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    nav .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Georgia', serif;
+      color: #002b5c;
+    }
+
+    p, ul {
+      font-family: 'Merriweather', serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #1a1a1a;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+    main {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: justify;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+  margin: 40px 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section.reverse {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
+}
+
+.section.reverse .text {
+  direction: ltr;
+}
+
+.text {
+  font-family: 'Merriweather', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #1a1a1a;
+}
+
+
+    /* Анимация изображений */
+    .fade-in-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 20px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.2s forwards;
+    }
+    .image-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden; /* важно! ограничивает круг в границах картинки */
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(0, 102, 255, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  top: 30%;
+  left: 20%;
+  animation: floatCircle 8s infinite ease-in-out;
+  z-index: 2;
+}
+
+@keyframes floatCircle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(80px, -20px);
+  }
+  50% {
+    transform: translate(60px, 40px);
+  }
+  75% {
+    transform: translate(-40px, 20px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 768px) {
+  header, nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-left img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .faculty-container {
+    grid-template-columns: 1fr;
+  }
+
+  .faculty-content h2 {
+    font-size: 20px;
+  }
+
+  .faculty-content p {
+    font-size: 15px;
+  }
+
+  .faculty-content a {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="png/logotip.png.webp" alt="Логотип">
+      <div class="header-title">
+        <div class="title-line">ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ</div>
+        <div class="title-line">СИНЕЙ ФЕДЕРАЦИИ</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <img src="png/icon1.png" alt="Иконка 1">
+      <img src="png/icon2.png" alt="Иконка 2">
+      <div class="divider"></div>
+      <img src="png/search.png" alt="Поиск">
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html#info">ГЛАВНАЯ</a>
+    <a href="obuchenie.html">ПРОЦЕСС ЗАЧИСЛЕНИЯ И ОБУЧЕНИЯ</a>
+    <div class="dropdown">
+      <a href="fakulteti.html#fak">ФАКУЛЬТЕТЫ</a>
+      <div class="dropdown-content">
+        <a href="pravo.html#pravo">Право</a>
+        <a href="medicina.html#med">Медицина</a>
+        <a href="jurnalistika.html#media">Журналистика</a>
+      </div>
+    </div>
+    <a href="prepodi.html#staff">ИНФОРМАЦИЯ О ПРЕПОДАВАТЕЛЯХ</a>
+  </nav>
+
+  <main>
+    <h1>Процесс зачисления и обучения</h1>
+    <p>Процесс зачисления в Государственный университет Синей Федерации осуществляется в несколько этапов:</p>
+
+    <h2>Этап 1: Подача заявления и зачисление</h2>
+<div class="section">
+  <div class="text">
+    <p>Каждому гражданину, желающему начать карьеру в одной из государственных структур (Правительство, МинЗдрав, СМИ), необходимо подать соответствующее заявление в специальную тему интересующей его организации под названием "Заявления на зачисление в Студенты [3]" (Для СМИ [2]). Ранее это была тема "Электронные заявления на должность [3]".</p>
+    <p>После рассмотрения и одобрения заявления со стороны руководства структуры, кандидат зачисляется в состав своей будущей организации на третью порядковую должность с наименованием "Студент".
+    <p>
+    <p>С этого момента он официально получает статус студента Государственного университета Синей Федерации и начинает обучение по выбранному профилю.</p>
+   </div>
+  <div class="image-wrapper">
+    <img src="png/admission.jpg.webp" alt="Подача документов">
+  </div>
+</div>
+
+
+<h2>Этап 2: Прохождение лекций и переход на практику</h2>
+<div class="section reverse">
+  <div class="text">
+    <p>В статусе студента, обучающийся обязан посетить лекционные занятия на своём факультете (Право, Медицина, Журналистика). Лекции включают базовые знания, профессиональную этику, особенности службы и внутренние регламенты.</p>
+    <p>После полного прохождения курса лекций и подтверждения этого со стороны преподавателя/куратора, студент переводится на четвёртую порядковую должность (Для СМИ на третью) в своей структуре на должность — "Практикант".</p>
+    <p>На этом этапе он приступает к стажировке в реальных условиях, участвуя в работе структуры под наблюдением наставников.</p>
+  </div>
+  <div class="image-wrapper">
+    <img src="png/study.jpg" alt="Описание">
+  </div>
+</div>
+
+<h2>Этап 3: Итоговая аттестация и вступление в должность</h2>
+<div class="section">
+  <div class="text">
+    <p>После завершения стажировки, Практикант обязан сдать экзамен, подтверждающий усвоение им теоретических и практических знаний, полученных в ходе обучения.</p>
+    <p>В случае успешной сдачи экзамена, он получает пятую порядковую должность (для СМИ четвёртую) — полноценного сотрудника соответствующей государственной структуры.
+</p>
+    <p>Таким образом, процесс поступления и обучения в Государственном университете обеспечивает надлежащее качество подготовки кадров, строгий отбор и чёткую поэтапность, гарантируя, что в государственные службы поступают только действительно подготовленные и мотивированные граждане.</p>
+   </div>
+  <div class="image-wrapper">
+    <img src="png/enrollment.jpg" alt="Описание">
+  </div>
+</div>
+  </main>
+
+  <script src="animprokrutkaobuzach.js"></script>
+</body>
+</html>

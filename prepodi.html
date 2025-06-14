@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Информация о преподавателях — ГУСФ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Georgia', serif;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-left img {
+      height: 80px;
+      margin-right: 20px;
+    }
+
+    .header-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .header-title .title-line {
+      font-size: 18px;
+      font-weight: normal;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-right img {
+      height: 22px;
+      width: 22px;
+      object-fit: contain;
+    }
+
+    .header-right .divider {
+      height: 22px;
+      width: 1px;
+      background-color: #999;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    nav {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+      position: relative;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+    }
+
+    nav a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      font-family: 'Georgia', serif;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+
+    nav .dropdown {
+      position: relative;
+    }
+
+    nav .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgb(0, 0, 0);
+      padding: 10px;
+      border-radius: 0 0 10px 10px;
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    nav .dropdown-content a {
+      display: block;
+      color: white;
+      padding: 5px 10px;
+    }
+
+    nav .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    nav .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #002b5c;
+      margin: 30px 0;
+    }
+
+    .staff-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .staff-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .staff-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .staff-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .staff-card h3 {
+      margin: 15px 0 5px;
+      font-size: 20px;
+      color: #002b5c;
+    }
+
+    .staff-card p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #555;
+    }
+    @media (max-width: 768px) {
+  header, nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-left img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .faculty-container {
+    grid-template-columns: 1fr;
+  }
+
+  .faculty-content h2 {
+    font-size: 20px;
+  }
+
+  .faculty-content p {
+    font-size: 15px;
+  }
+
+  .faculty-content a {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="png/logotip.png.webp" alt="Логотип">
+      <div class="header-title">
+        <div class="title-line">ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ</div>
+        <div class="title-line">СИНЕЙ ФЕДЕРАЦИИ</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <img src="png/icon1.png" alt="Иконка 1">
+      <img src="png/icon2.png" alt="Иконка 2">
+      <div class="divider"></div>
+      <img src="png/search.png" alt="Поиск">
+    </div>
+  </header>
+  <nav>
+    <a href="index.html">ГЛАВНАЯ</a>
+    <a href="obuchzach.html#obuchzach">ПРОЦЕСС ЗАЧИСЛЕНИЯ И ОБУЧЕНИЯ</a>
+    <div class="dropdown">
+      <a href="fakulteti.html#fak">ФАКУЛЬТЕТЫ</a>
+      <div class="dropdown-content">
+        <a href="pravo.html#pravo">Право</a>
+        <a href="medicina.html#med">Медицина</a>
+        <a href="jurnalistika.html#media">Журналистика</a>
+      </div>
+    </div>
+    <a href="prepodi.html#staff">ИНФОРМАЦИЯ О ПРЕПОДАВАТЕЛЯХ</a>
+  </nav>
+
+  <h1>Преподаватели ГУСФ</h1>
+
+  <div class="staff-section">
+    <div class="staff-grid">
+      <div class="staff-card">
+        <img src="png/teacher1.webp" alt="Ректор">
+        <h3>Smart Piratov</h3>
+        <p>Ректор Университета</p>
+      </div>
+      <div class="staff-card">
+        <img src="png/teacher2.jpg" alt="Декан Права">
+        <h3>Andre LaGuerra</h3>
+        <p>Декан факультета "Право"</p>
+      </div>
+      <div class="staff-card">
+        <img src="png/teacher3.jpg" alt="Декан Медицины">
+        <h3>Dilshot Cardello</h3>
+        <p>Декан медицинского факультета</p>
+      </div>
+      <div class="staff-card">
+        <img src="png/teacher4.jpg" alt="Ректор СМИ">
+        <h3>Lee Moore</h3>
+        <p>Ректор Академии СМИ (Журналистика)</p>
+      </div>
+    </div>
+
+    <h1 style="margin-top:60px">Преподаватели факультетов</h1>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <img src="png/teacher5.jpg" alt="Преподаватель Права">
+        <h3>—</h3>
+        <p>Преподаватель факультета "Право"</p>
+      </div>
+      <div class="staff-card">
+        <img src="png/teacher3.jpg" alt="Преподаватель Медицины">
+        <h3>Dilshot Cardello</h3>
+        <p>Преподаватель медицинского факультета</p>
+      </div>
+      <div class="staff-card">
+        <img src="png/teacher7.jpg" alt="Преподаватель СМИ">
+        <h3>Mia Granados</h3>
+        <p>Преподаватель Академии СМИ</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
